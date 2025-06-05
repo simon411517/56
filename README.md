@@ -1,4 +1,3 @@
-會考成績預估系統
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -31,7 +30,7 @@
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #b8a494;
+            background-color: #a8907d;
         }
         .card {
             background-color: #fff;
@@ -42,6 +41,21 @@
             width: 90%;
             max-width: 500px;
             text-align: center;
+        }
+        .grade {
+            font-size: 22px;
+            color: #5c4a42;
+            margin-bottom: 10px;
+        }
+        .ranking {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8c6d5d;
+            background-color: #f9f5f1;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
         }
         .footer {
             margin-top: 20px;
@@ -147,8 +161,8 @@
     <button onclick="calculateRank()">計算排名</button>
 
     <div class="card" id="result" style="display:none;">
-        <div id="grade"></div>
-        <div id="ranking"></div>
+        <div id="grade" class="grade"></div>
+        <div id="ranking" class="ranking"></div>
     </div>
 
     <div class="footer">僅供參考</div>
@@ -205,17 +219,6 @@
                     document.getElementById("grade").innerText = `成績類別：${gradeCombo}`;
                     document.getElementById("ranking").innerText = `預估排名範圍：第 ${startRank} 名 ～ 第 ${endRank} 名`;
                     document.getElementById("result").style.display = "block";
-
-                    // 5 秒後清空表單
-                    setTimeout(() => {
-                        document.getElementById("region").value = "";
-                        document.getElementById("chinese").value = "";
-                        document.getElementById("math").value = "";
-                        document.getElementById("english").value = "";
-                        document.getElementById("science").value = "";
-                        document.getElementById("social").value = "";
-                        document.getElementById("result").style.display = "none";
-                    }, 5000);
                     return;
                 }
                 cumulative += data.percent;
@@ -224,16 +227,6 @@
             document.getElementById("grade").innerText = `成績類別：${gradeCombo}`;
             document.getElementById("ranking").innerText = `預估排名範圍：無法估算`;
             document.getElementById("result").style.display = "block";
-
-            setTimeout(() => {
-                document.getElementById("region").value = "";
-                document.getElementById("chinese").value = "";
-                document.getElementById("math").value = "";
-                document.getElementById("english").value = "";
-                document.getElementById("science").value = "";
-                document.getElementById("social").value = "";
-                document.getElementById("result").style.display = "none";
-            }, 5000);
         }
     </script>
 </body>
